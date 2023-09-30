@@ -1,0 +1,52 @@
+[
+  {
+    "name": "Meryl Streep",
+    "law_area": "Family Law",
+    "description": "Legendary actress with numerous Academy Awards, celebrated for her work in Sophie's Choice and The Devil Wears Prada."
+  },
+  {
+    "name": "Julia Roberts",
+    "law_area": "Family Law",
+    "description": "Academy Award-winning actress, famous for Pretty Woman and Erin Brockovich."
+  },
+  {
+    "name": "Cate Blanchett",
+    "law_area": "Family Law",
+    "description": "Talented actress, Academy Award winner, known for her captivating roles in Blue Jasmine and Elizabeth."
+  },
+  {
+    "name": "Angelina Jolie",
+    "law_area": "Family Law",
+    "description": "Award-winning actress and humanitarian, known for her roles in Maleficent and Girl, Interrupted."
+  },
+  {
+    "name": "Nicole Kidman",
+    "law_area": "Family Law",
+    "description": "Acclaimed actress, known for her roles in Moulin Rouge! and The Hours, and her captivating performances."
+  },
+  {
+    "name": "Jennifer Aniston",
+    "law_area": "Family Law",
+    "description": "Beloved actress famous for Friends and Marley & Me, a Golden Globe winner."
+  },
+  {
+    "name": "Anne Hathaway",
+    "law_area": "Family Law",
+    "description": "Award-winning actress celebrated for Les Misérables and The Devil Wears Prada."
+  },
+  {
+    "name": "Kate Winslet",
+    "law_area": "Family Law",
+    "description": "Academy Award-winning actress, famed for Titanic and The Reader."
+  },
+  {
+    "name": "Sandra Bullock",
+    "law_area": "Family Law",
+    "description": "Beloved actress with an Oscar for The Blind Side, known for Gravity and Miss Congeniality."
+  },
+  {
+    "name": "Natalie Dormer",
+    "law_area": "Family Law",
+    "description": "Actress known for Game of Thrones and The Hunger Games series."
+  }
+]

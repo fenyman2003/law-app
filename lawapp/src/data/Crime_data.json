@@ -1,0 +1,87 @@
+[
+  {
+    "name": "Brad Pitt",
+    "law_area": "Criminal Law",
+    "description": "Oscar-winning actor known for his roles in Fight Club and Inglourious Basterds."
+  },
+  {
+    "name": "Leonardo DiCaprio",
+    "law_area": "Criminal Law",
+    "description": "Iconic actor starred in Titanic and The Revenant, winning an Academy Award for the latter."
+  },
+  {
+    "name": "Tom Hanks",
+    "law_area": "Criminal Law",
+    "description": "Beloved actor known for Forrest Gump and Saving Private Ryan, recipient of multiple Oscars."
+  },
+  {
+    "name": "Johnny Depp",
+    "law_area": "Criminal Law",
+    "description": "Versatile actor famed for Pirates of the Caribbean and Edward Scissorhands."
+  },
+  {
+    "name": "Denzel Washington",
+    "law_area": "Criminal Law",
+    "description": "Esteemed actor renowned for Training Day and Glory, a two-time Academy Award winner."
+  },
+  {
+    "name": "George Clooney",
+    "law_area": "Criminal Law",
+    "description": "Charming actor known for Ocean's Eleven and Up in the Air, an Academy Award winner."
+  },
+  {
+    "name": "Robert De Niro",
+    "law_area": "Criminal Law",
+    "description": "Iconic actor known for his roles in Taxi Driver and The Godfather Part II, a two-time Oscar winner."
+  },
+  {
+    "name": "Natalie Portman",
+    "law_area": "Family Law",
+    "description": "Academy Award-winning actress, recognized for her work in Black Swan and V for Vendetta."
+  },
+  {
+    "name": "Will Smith",
+    "law_area": "Criminal Law",
+    "description": "Versatile actor, known for Men in Black and The Pursuit of Happyness, received Academy Award nominations."
+  },
+  {
+    "name": "Keanu Reeves",
+    "law_area": "Criminal Law",
+    "description": "Matrix star celebrated for his roles in John Wick and The Devil's Advocate."
+  },
+  {
+    "name": "Emma Stone",
+    "law_area": "Family Law",
+    "description": "Oscar-winning actress known for La La Land and The Help, praised for her versatile acting."
+  },
+  {
+    "name": "Matt Damon",
+    "law_area": "Criminal Law",
+    "description": "Talented actor, famous for Good Will Hunting and Jason Bourne series, Academy Award winner."
+  },
+  {
+    "name": "Samuel L. Jackson",
+    "law_area": "Criminal Law",
+    "description": "Iconic actor known for Pulp Fiction and The Avengers, one of the highest-grossing actors in film history."
+  },
+  {
+    "name": "Harrison Ford",
+    "law_area": "Criminal Law",
+    "description": "Legendary actor known for Indiana Jones and Star Wars franchises."
+  },
+  {
+    "name": "Tom Cruise",
+    "law_area": "Criminal Law",
+    "description": "Iconic actor famous for Top Gun and Mission: Impossible series."
+  },
+  {
+    "name": "Scarlett Johansson",
+    "law_area": "Family Law",
+    "description": "Talented actress and Marvel superhero, celebrated for her role as Black Widow."
+  },
+  {
+    "name": "Sam Rockwell",
+    "law_area": "Criminal Law",
+    "description": "Versatile actor known for Three Billboards Outside Ebbing, Missouri and Moon, an Academy Award winner."
+  }
+]
