@@ -26,11 +26,14 @@ const LawyerCard = () => {
   return (
     <>
       {lawyersInfo.length == 0 ? (
-        <p>Hiii</p>
+        <h1 className="d-flex text-info justify-content-center">Loading...</h1>
       ) : (
         <div className="container mt-5">
           <div className="row">
             <div className="col">
+              <h2 className="m-3 d-flex justify-content-center">
+                Top Rated Lawyers
+              </h2>
               <div className="d-flex flex-nowrap overflow-auto">
                 {lawyersInfo.map((data, key) => (
                   <div key={key} className="col-md-3 px-1">
@@ -52,7 +55,7 @@ const LawyerCard = () => {
                           ))}
                         </div>
                         <Card.Text>{data.description}</Card.Text>
-                        <Link to={`lawyers/${data._id}`}>
+                        <Link to={`/lawyers/${data._id}`}>
                           <Button className="btn btn-primary">
                             Book a consultation{" "}
                           </Button>

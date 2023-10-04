@@ -6,7 +6,7 @@ export const Home = () => {
   return (
     <>
       <div>
-        <Lawcategories />
+        {/* <Lawcategories /> */}
         <LawyerCard />
         {/* <CarouselCard /> */}
       </div>

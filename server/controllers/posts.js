@@ -30,6 +30,7 @@ export const createLawyer = async (req, res) => {
 // get all Lawyers
 export const getLawyers = async (req, res) => {
   try {
+    const { lawArea } = req.query;
     const getLawyers = await lawyerSchema.find();
     res.status(200).json(getLawyers);
   } catch (error) {
@@ -122,15 +123,39 @@ export const deleteLawyer = async (req, res) => {
 
 export const getSearchResults = async (req, res) => {
   try {
-    const { minPrice, maxPrice } = req.query;
+  } catch (error) {
+    console.error("Error fetching products", error);
+    res.status(500).json({ message: error.message });
+  }
+};
 
-    // Find products within the specified price range and limit to 10 results
+export const getUserSearchResults = async (req, res) => {
+  try {
+    const { names } = req.query;
     const products = await lawyerSchema
       .find({
-        charges: { $gte: minPrice, $lte: maxPrice },
+        name: {
+          $regex: new RegExp("^" + names.toLowerCase(), "i"),
+        },
       })
       .limit(10);
+    res.json(products);
+  } catch (error) {
+    console.error("Error fetching products", error);
+    res.status(500).json({ message: error.message });
+  }
+};
 
+export const getAreaSearchResults = async (req, res) => {
+  try {
+    const { lawAreas } = req.query;
+    const products = await lawyerSchema
+      .find({
+        lawArea: {
+          $regex: new RegExp("^" + lawAreas.toLowerCase(), "i"),
+        },
+      })
+      .limit(10);
     res.json(products);
   } catch (error) {
     console.error("Error fetching products", error);
@@ -154,4 +179,4 @@ export const getSearchResults = async (req, res) => {
 //   res.json(updatedPost);
 // };
 
-export default router;
+// export default router;

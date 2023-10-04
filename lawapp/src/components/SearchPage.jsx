@@ -1,64 +1,113 @@
-// ProductList.js
-import React, { useState, useEffect } from "react";
-import SearchLawyer from "./SearchLawyer";
+import React from "react";
+import SearchLawyer from "../components/SearchLawyer";
+import { useState, useEffect } from "react";
+import client from "../api";
+import { Button, Form, Dropdown } from "react-bootstrap";
 
-const SearchPage = () => {
-  let lo, hi;
-  const [minPrice, setMinPrice] = useState("");
-  const [maxPrice, setMaxPrice] = useState("");
+function SearchBar({ onSearch }) {
+  const [name, setname] = useState("");
+  const [law, setlaw] = useState("");
 
-  const handleMinPriceChange = (e) => {
-    setMinPrice(e.target.value);
+  const handleNameChange = (e) => {
+    setname(e.target.value);
   };
-
-  const handleMaxPriceChange = (e) => {
-    setMaxPrice(e.target.value);
+  const handlelawChange = (e) => {
+    setlaw(e.target.value);
   };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    lo = minPrice;
-    hi = maxPrice;
-    // Do something with minPrice and maxPrice, e.g., send to an API or perform a search
-    console.log("Minimum Price:", minPrice);
-    console.log("Maximum Price:", maxPrice);
+  const handleSearch = () => {
+    let values = {
+      name: name,
+      law: law,
+    };
+    console.log(values);
+    onSearch(values);
+    setname("");
+    setlaw("");
   };
 
   return (
     <>
       <div>
-        <h2>Price Filter</h2>
-        <form onSubmit={handleSubmit}>
-          <div className="form-group">
-            <label htmlFor="minPrice">Minimum Price:</label>
-            <input
-              type="number"
-              id="minPrice"
-              value={minPrice}
-              onChange={handleMinPriceChange}
-              className="form-control"
-            />
+        <div className="d-flex flex-row mt-3 justify-content-around align-items-center">
+          <h2 className="m-5">Search By Lawyer Name </h2>
+          <div className="w-50  ">
+            <Form>
+              <Form.Group controlId="searchBar">
+                <Form.Control
+                  type="text"
+                  placeholder="Search lawyers..."
+                  onChange={handleNameChange}
+                  value={name}
+                />
+              </Form.Group>
+            </Form>
           </div>
-          <div className="form-group">
-            <label htmlFor="maxPrice">Maximum Price:</label>
-            <input
-              type="number"
-              id="maxPrice"
-              value={maxPrice}
-              onChange={handleMaxPriceChange}
-              className="form-control"
-            />
-          </div>
-          <button
-            type="submit"
-            className="btn btn-primary"
-            onClick={handleSubmit}
-          >
+          <Button onClick={handleSearch} className="btn btn-primary">
             Submit
-          </button>
-        </form>
+          </Button>
+        </div>
       </div>
-      <SearchLawyer minPrice={lo} maxPrice={hi} />
+      <div>
+        <div className="d-flex flex-row mt-3 justify-content-around align-items-center">
+          <h2 className="m-1">Search By lawyers by Law Area </h2>
+          <div className="w-50  ">
+            <Form>
+              <Form.Group controlId="searchBar">
+                <Form.Control
+                  type="text"
+                  placeholder="Search lawyers by law area..."
+                  onChange={handlelawChange}
+                  value={law}
+                />
+              </Form.Group>
+            </Form>
+          </div>
+          <Button onClick={handleSearch} className="btn btn-primary">
+            Submit
+          </Button>
+        </div>
+      </div>
+    </>
+  );
+}
+
+const SearchPage = () => {
+  const [name, setname] = useState("");
+  const [lawArea, setlawArea] = useState("");
+  const [lawyerInfo, setlawyerInfo] = useState([]);
+  async function get(url) {
+    let response = await client.get(url);
+    console.log(response.data);
+    return response.data;
+  }
+  useEffect(() => {
+    if (name.length > 0 || lawArea.length > 0) {
+      async function fetchData() {
+        if (name.length > 0) {
+          let data = await get(`/search/name?names=${name}`);
+          setlawyerInfo(data);
+        } else {
+          let data = await get(`/search/area?lawAreas=${lawArea}`);
+          setlawyerInfo(data);
+          console.log(lawyerInfo);
+        }
+      }
+      console.log("hi");
+      fetchData();
+    }
+  }, [name, lawArea]);
+
+  const handleNameSearch = (term) => {
+    setname(term.name);
+    setlawArea(term.law);
+  };
+
+  return (
+    <>
+      <SearchBar onSearch={handleNameSearch} />
+      {(name && name.length > 0) | (lawArea && lawArea.length > 0) && (
+        <SearchLawyer lawyerInfo={lawyerInfo} />
+      )}
     </>
   );
 };

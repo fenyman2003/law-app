@@ -16,6 +16,8 @@ import {
   deleteLawyer,
   deleteUser,
   getSearchResults,
+  getAreaSearchResults,
+  getUserSearchResults,
 } from "../server/controllers/posts.js";
 
 const app = express();
@@ -38,24 +40,6 @@ mongoose
   })
   .catch((error) => console.log(`${error} did not connect`));
 
-app.post("/homes", async (req, res) => {
-  try {
-    const User = await userSchema.create(req.body);
-    res.status(200).json(User);
-  } catch (error) {
-    res.status(404).json({ message: error.message });
-  }
-});
-
-app.get("/homes", async (req, res) => {
-  try {
-    const User = await userSchema.find();
-    res.status(200).json(User);
-  } catch (error) {
-    res.status(404).json({ message: error.message });
-  }
-});
-
 app.get("/users", getUsers);
 app.post("/users", createUser);
 app.get("/lawyers", getLawyers);
@@ -66,5 +50,6 @@ app.patch("/users/:id", updateUser);
 app.patch("/lawyers/:id", updateLawyer);
 app.delete("/lawyers/:id", deleteLawyer);
 app.patch("/users/:id", deleteUser);
-
 app.get("/search", getSearchResults);
+app.get("/search/name", getUserSearchResults);
+app.get("/search/area", getAreaSearchResults);

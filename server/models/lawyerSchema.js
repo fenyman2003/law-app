@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const LawyerSchema = mongoose.Schema({
   name: String,
-  lawArea: [String],
+  lawArea: [],
   biography: String,
   region: String,
   stars: {

@@ -4,30 +4,22 @@ import kemal from "../kemal.jpg";
 import client from "../api";
 import { Link } from "react-router-dom";
 
-function SearchLawyer({ minPrice, maxPrice }) {
-  const [lawyerInfo, setlawyerInfo] = useState([]);
-  async function get(url) {
-    let response = await client.get(url);
-    return response.data;
-  }
-  useEffect(() => {
-    if (lawyerInfo.length) return;
-    async function fetchData() {
-      let data = await get(`/search?minPrice=${minPrice}&maxPrice=${maxPrice}`);
-      setlawyerInfo(data);
-    }
-
-    fetchData();
-  }, []);
-
+function SearchLawyer({ lawyerInfo }) {
   return (
     <>
       {lawyerInfo.length == 0 ? (
-        <p>hii hello</p>
+        <div className="container mt-5 justify-content-center border border-primary rounded border-2 w-50 h-50">
+          <h1 className="d-flex text-info justify-content-center">
+            Loading...
+          </h1>
+        </div>
       ) : (
         <div>
-          {lawyerInfo.map((data, key) => (
-            <div className="container mt-5 justify-content-center border border-danger rounded border-2 w-50 bg-warning">
+          {lawyerInfo.map((data, id) => (
+            <div
+              key={id}
+              className="container mt-5 justify-content-center border border-primary rounded border-2 w-50 bg"
+            >
               <div className="row justify-content-center">
                 <div className="col-md-3">
                   <img
@@ -62,7 +54,12 @@ function SearchLawyer({ minPrice, maxPrice }) {
                     <p>{data.biography}</p>
                   </div>
                   <div>
-                    <Button className="btn btn-primary mb-2"> Book Now </Button>
+                    <Link to={`book`}>
+                      <Button className="btn btn-primary mb-2">
+                        {" "}
+                        Book Now{" "}
+                      </Button>
+                    </Link>
                     <h4>Consultation Price : {data.charges}</h4>
                   </div>
                 </div>

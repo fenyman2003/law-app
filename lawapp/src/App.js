@@ -3,20 +3,9 @@ import { Routes, Route } from "react-router-dom";
 import { Home } from "./routes/Home";
 import Navigationbar from "./components/Navigationbar";
 import { Lawyers } from "./routes/Lawyers";
-import axios from "axios";
 import { ProfilePage } from "./routes/ProfilePage";
 import Search from "./routes/Search";
-
-const url = "http://localhost:5000";
-const client = axios.create({
-  baseURL: url,
-});
-async function getSearchResults() {
-  const response = await client.get("/search?minPrice=500&maxPrice=700");
-  console.log(response.data);
-}
-
-getSearchResults();
+import BookNow from "./components/BookNow";
 
 function App() {
   return (
@@ -28,7 +17,11 @@ function App() {
           <Route index element={<Lawyers />} />
           <Route path=":_id" element={<ProfilePage />} />
         </Route>
-        <Route path="search" element={<Search />} />
+        <Route path="search">
+          <Route index element={<Search />} />
+          <Route path="book" element={<BookNow />} />
+        </Route>
+        <Route path="templates" />
       </Routes>
     </>
   );
