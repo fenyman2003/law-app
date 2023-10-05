@@ -123,6 +123,23 @@ export const deleteLawyer = async (req, res) => {
 
 export const getSearchResults = async (req, res) => {
   try {
+    const { searchParam } = req.query;
+    let param = searchParam.toLowerCase();
+    const products = await lawyerSchema.find({
+      $or: [
+        {
+          name: {
+            $regex: new RegExp("^" + param, "i"),
+          },
+        },
+        {
+          lawArea: {
+            $regex: new RegExp("^" + param, "i"),
+          },
+        },
+      ],
+    });
+    res.json(products);
   } catch (error) {
     console.error("Error fetching products", error);
     res.status(500).json({ message: error.message });
